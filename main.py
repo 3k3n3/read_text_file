@@ -5,6 +5,7 @@
 
 def read_file_content(filename):
     # [assignment] Add your code here
+
     global f
     f = open(filename, 'r')
     return "Hello World"
@@ -14,18 +15,28 @@ print(read_file_content(filename='./story.txt'))
 def count_words():
     text = read_file_content("./story.txt")
     # [assignment] Add your code here
-    x = f.read()
+
+    #create empty dictionary
+    thisDict = { }
+
+    #read text file to a string variable text
+    text = f.read()
+
+    #remove signs in string
     for char in '.,?!':
-        x = x.replace(char, '')
-    y = x.split()
+        text = text.replace(char, '')
 
-    for item in y:
-        thisDict = {
-            item : y.count(item)
-        }
+    #convert string to array of strings
+    txtList = text.split()
 
-        print (thisDict)
+    #remove duplicates, convert to dictionary and back to list
+    txtListUniq = list(dict.fromkeys(txtList))
+
+    #loop through to get list items key and number of occurence as value
+    for item in txtList:
+        thisDict [item] = txtList.count(item)
+
+    print (thisDict)
 
     #return {"as": 10, "would": 20}
-
 count_words() 
